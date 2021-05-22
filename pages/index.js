@@ -86,7 +86,7 @@ export default function Home() {
   };
 
   return (
-    <MainLayout title="Ease to cook">
+    <MainLayout title="Easy to cook">
       <Flex flexWrap="wrap" w="100%" maxWidth="900px" alignItems="flex-start" justifyContent="center">
         <Flex flexDirection="column" alignItems="stretch" justifyContent="flex-start" flex="2"  w="100%">
           <MealQuery getMealData={(mealName) => getMealData(mealName)} isInvalid={isInvalid}/>
