@@ -15,7 +15,7 @@ export default function MainLayout({ children, title }) {
 
       <main className={styles.main}>
           <Heading as="h1" align="center" size="2xl" mb="10">
-            Welcome to <Text as="span" color="teal.500">EaseToCook</Text>
+            Welcome to <Text as="span" color="teal.500">EasyToCook</Text>
           </Heading>
           {children}
       </main>
