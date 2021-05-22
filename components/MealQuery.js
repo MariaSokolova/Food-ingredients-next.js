@@ -11,32 +11,43 @@ export default function MealQuery({ getMealData, isInvalid }) {
   const onClean = () => {
     setMealName("");
   };
+  const getIngredients = () => {
+    getMealData(mealName);
+    setMealName("");
+  };
+
+  const keyPress = (e) => {
+    if (e.keyCode === 13 && mealName) {
+      getIngredients();
+    }
+  };
 
   return (
-      <Box p="6" m="4" borderWidth="1px"
-            rounded="lg" >
-        <Text fontSize="xl" mb="2" mt="2">
-          Provide the meal and get the list of ingredients
-        </Text>
-        <Input
-          onChange={handleChange}
-          value={mealName}
-          placeholder="Provide your meal..."
-          type="text"
-          autoFocus
-        />
-        {isInvalid && <Text fontSize="md" mb="2" mt="2" color="tomato">
-          Sorry, we don't have this recipe for you. Please try another meal.
-        </Text>}
-        <Flex alignItems="center" justifyContent="space-between" mt="10">
-          <Button onClick={() => getMealData(mealName)} colorScheme="teal" size="md" isDisabled={!mealName}>
-            Find ingredients
-          </Button>
-          <Button onClick={onClean} colorScheme="teal" size="md" isDisabled={!mealName}>
-            Clear
-          </Button>
-        </Flex>
-      </Box>
+    <Box p="6" m="4" borderWidth="1px"
+         rounded="lg">
+      <Text fontSize="xl" mb="2" mt="2">
+        Provide the meal and get the list of ingredients
+      </Text>
+      <Input
+        onChange={handleChange}
+        onKeyDown={keyPress}
+        value={mealName}
+        placeholder="Provide your meal..."
+        type="text"
+        autoFocus
+      />
+      {isInvalid && <Text fontSize="md" mb="2" mt="2" color="tomato">
+        Sorry, we don't have this recipe for you. Please try another meal.
+      </Text>}
+      <Flex alignItems="center" justifyContent="space-between" mt="10">
+        <Button onClick={getIngredients} colorScheme="teal" size="md" isDisabled={!mealName}>
+          Find ingredients
+        </Button>
+        <Button onClick={onClean} colorScheme="teal" size="md" isDisabled={!mealName}>
+          Clear
+        </Button>
+      </Flex>
+    </Box>
   )
 }
 
